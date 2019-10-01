@@ -11,4 +11,6 @@ webmin_apt_repo: "deb https://download.webmin.com/download/repository sarge cont
 firewalld_enable: false    
 install_utilities: false
 uninstall_webmin: false
-manage_yum_repo: false
+webmin_manage_yum_repo: false
+webmin_custom_key: ""
+webmin_custom_cert: ""
