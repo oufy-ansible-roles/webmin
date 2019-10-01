@@ -19,7 +19,7 @@
     gpgkey: "{{ webmin_gpgkey }}"
     gpgcheck: true
     state: present
-  when: (ansible_os_family == "RedHat") and (manage_yum_repo)
+  when: (ansible_os_family == "RedHat") and (webmin_manage_yum_repo)
 
 - name: Add a gpg key for Debian platforms
   apt_key:
@@ -67,6 +67,15 @@
     src: webmin.service.j2
     dest: /etc/systemd/system/webmin.service
     mode: 0755
+
+- name: Customize Webmin certificate
+  template:
+    src: miniserv.pem.j2
+    dest: /etc/webmin/miniserv.pem
+    owner: root
+    group: bin
+    mode: 0600
+  when: webmin_custom_cert and webmin_custom_key
 
 - name: Stop running instance before restarting under systemd
   command: /etc/webmin/stop
