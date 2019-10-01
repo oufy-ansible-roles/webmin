@@ -3,6 +3,7 @@ galaxy_info:
   author: oufy
   description: webmin role
   company: OufY.net
+  version: 1.0.0
 
   license: GPLv3
 
